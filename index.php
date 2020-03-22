@@ -37,26 +37,26 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 //content
 mysqli_select_db($cms, $database_cms);
 $query_bio = "SELECT * FROM cmsPages WHERE pageID = 83";
-$bio = mysqli_query($query_bio, $cms) or die(mysqli_error());
+$bio = mysqli_query($cms, $query_bio) or die(mysqli_error($cms));
 $row_bio = mysqli_fetch_assoc($bio);
 $totalRows_bio = mysqli_num_rows($bio);
 
 mysqli_select_db($cms, $database_cms);
 $query_reviews = "SELECT * FROM cmsPages WHERE pageID = 85";
-$reviews = mysqli_query($query_reviews, $cms) or die(mysqli_error());
+$reviews = mysqli_query($cms, $query_reviews) or die(mysqli_error($cms));
 $row_reviews = mysqli_fetch_assoc($reviews);
 $totalRows_reviews = mysqli_num_rows($reviews);
 
 mysqli_select_db($cms, $database_cms);
 $query_hire = "SELECT * FROM cmsPages WHERE pageID = 84";
-$hire = mysqli_query($query_hire, $cms) or die(mysqli_error());
+$hire = mysqli_query($cms, $query_hire) or die(mysqli_error($cms));
 $row_hire = mysqli_fetch_assoc($hire);
 $totalRows_hire = mysqli_num_rows($hire);
 
 //photos
 mysqli_select_db($cms, $database_cms);
 $query_Recordset1 = "SELECT * FROM photos WHERE albumID = ".$albumID." ORDER BY photoSequence ASC";
-$Recordset1 = mysqli_query($query_Recordset1, $cms) or die(mysqli_error());
+$Recordset1 = mysqli_query($cms, $query_Recordset1) or die(mysqli_error($cms));
 $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 ?>
