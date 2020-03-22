@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vimeo Simple API Gallery Example</title>
+<style>
+#wrapper {
+	margin: auto;
+	width: 820px;
+}
+#thumbs {
+	width: 100%;
+	height: auto;
+}
+#thumbs ul {
+	list-style-type: none;
+	margin: 0 10px 0;
+	padding: 10px 0 10px 0;
+}
+#thumbs ul li {
+	height: 75px;
+	width: 50%;
+	float: left;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+#thumbs ul li p {
+	margin: 5px;
+}
+.thumb {
+	border: 0;
+	float: left;
+	width: 100px;
+	height: 75px;
+	background: url(http://a.vimeocdn.com/thumbnails/defaults/default.75x100.jpg);
+	margin-right: 10px;
+}
+#embed, iframe {
+	height: 455.55px;
+	width: 820px;
+}
+@media all and (max-width: 819px) {
+#wrapper {
+	width: 504px;
+}
+#thumbs {
+	width: 100%;
+	height: auto;
+}
+#thumbs ul li {
+	width: 100%;
+}
+#embed, iframe {
+	height: 280px;
+	width: 504px;
+	margin: auto
+}
+}
+@media all and (max-width: 503px) {
+#wrapper {
+	width: 320px;
+}
+#embed {
+	padding-bottom: 20px;
+}
+#embed, iframe {
+	height: 177.77px;
+	width: 320px;
+	margin: auto
+}
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+	var apiEndpoint = 'http://vimeo.com/api/v2/';
+	var oEmbedEndpoint = 'http://vimeo.com/api/oembed.json'
+	var oEmbedCallback = 'switchVideo';
+	var videosCallback = 'setupGallery';
+	var vimeoUsername = 'yuliyadancer';
+	// Get the user's videos
+	$(document).ready(function() {
+		$.getScript(apiEndpoint + vimeoUsername + '/videos.json?callback=' + videosCallback);
+	});
+	function getVideo(url) {
+		$.getScript(oEmbedEndpoint + '?url=' + url + '&width=504&height=280&callback=' + oEmbedCallback);
+	}
+	function setupGallery(videos) {
+		// Load the first video
+		getVideo(videos[0].url);
+		// Add the videos to the gallery
+		for (var i = 0; i < videos.length; i++) {
+			var html = '<li><a href="' + videos[i].url + '"><img src="' + videos[i].thumbnail_medium + '" class="thumb" />';
+			html += '<p>' + videos[i].title + '</p></a></li>';
+			$('#thumbs ul').append(html);
+		}
+		// Switch to the video when a thumbnail is clicked
+		$('#thumbs a').click(function(event) {
+			event.preventDefault();
+			getVideo(this.href);
+			return false;
+		});
+	}
+	function switchVideo(video) {
+		$('#embed').html(unescape(video.html));
+	}
+	//uncomment the following 5 lines if you want to show a particular video on page load
+	/*
+	$(window).load(function() {
+		getVideo('http://vimeo.com/134911897');
+	});
+	*/
+</script>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="embed"></div>
+    <div id="thumbs">
+      <ul>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
