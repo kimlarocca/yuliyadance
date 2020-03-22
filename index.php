@@ -35,30 +35,30 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 //content
-mysql_select_db($database_cms, $cms);
+mysqli_select_db($database_cms, $cms);
 $query_bio = "SELECT * FROM cmsPages WHERE pageID = 83";
-$bio = mysql_query($query_bio, $cms) or die(mysql_error());
-$row_bio = mysql_fetch_assoc($bio);
-$totalRows_bio = mysql_num_rows($bio);
+$bio = mysqli_query($query_bio, $cms) or die(mysqli_error());
+$row_bio = mysqli_fetch_assoc($bio);
+$totalRows_bio = mysqli_num_rows($bio);
 
-mysql_select_db($database_cms, $cms);
+mysqli_select_db($database_cms, $cms);
 $query_reviews = "SELECT * FROM cmsPages WHERE pageID = 85";
-$reviews = mysql_query($query_reviews, $cms) or die(mysql_error());
-$row_reviews = mysql_fetch_assoc($reviews);
-$totalRows_reviews = mysql_num_rows($reviews);
+$reviews = mysqli_query($query_reviews, $cms) or die(mysqli_error());
+$row_reviews = mysqli_fetch_assoc($reviews);
+$totalRows_reviews = mysqli_num_rows($reviews);
 
-mysql_select_db($database_cms, $cms);
+mysqli_select_db($database_cms, $cms);
 $query_hire = "SELECT * FROM cmsPages WHERE pageID = 84";
-$hire = mysql_query($query_hire, $cms) or die(mysql_error());
-$row_hire = mysql_fetch_assoc($hire);
-$totalRows_hire = mysql_num_rows($hire);
+$hire = mysqli_query($query_hire, $cms) or die(mysqli_error());
+$row_hire = mysqli_fetch_assoc($hire);
+$totalRows_hire = mysqli_num_rows($hire);
 
 //photos
-mysql_select_db($database_cms, $cms);
+mysqli_select_db($database_cms, $cms);
 $query_Recordset1 = "SELECT * FROM photos WHERE albumID = ".$albumID." ORDER BY photoSequence ASC";
-$Recordset1 = mysql_query($query_Recordset1, $cms) or die(mysql_error());
-$row_Recordset1 = mysql_fetch_assoc($Recordset1);
-$totalRows_Recordset1 = mysql_num_rows($Recordset1);
+$Recordset1 = mysqli_query($query_Recordset1, $cms) or die(mysqli_error());
+$row_Recordset1 = mysqli_fetch_assoc($Recordset1);
+$totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
