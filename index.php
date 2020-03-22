@@ -4,7 +4,7 @@ $albumID = 119;
 ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -15,7 +15,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -35,28 +35,28 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 //content
-mysqli_select_db($database_cms, $cms);
+mysqli_select_db($database_cms);
 $query_bio = "SELECT * FROM cmsPages WHERE pageID = 83";
-$bio = mysqli_query($query_bio, $cms) or die(mysqli_error());
+$bio = mysqli_query($query_bio) or die(mysqli_error());
 $row_bio = mysqli_fetch_assoc($bio);
 $totalRows_bio = mysqli_num_rows($bio);
 
-mysqli_select_db($database_cms, $cms);
+mysqli_select_db($database_cms);
 $query_reviews = "SELECT * FROM cmsPages WHERE pageID = 85";
-$reviews = mysqli_query($query_reviews, $cms) or die(mysqli_error());
+$reviews = mysqli_query($query_reviews) or die(mysqli_error());
 $row_reviews = mysqli_fetch_assoc($reviews);
 $totalRows_reviews = mysqli_num_rows($reviews);
 
-mysqli_select_db($database_cms, $cms);
+mysqli_select_db($database_cms);
 $query_hire = "SELECT * FROM cmsPages WHERE pageID = 84";
-$hire = mysqli_query($query_hire, $cms) or die(mysqli_error());
+$hire = mysqli_query($query_hire) or die(mysqli_error());
 $row_hire = mysqli_fetch_assoc($hire);
 $totalRows_hire = mysqli_num_rows($hire);
 
 //photos
-mysqli_select_db($database_cms, $cms);
+mysqli_select_db($database_cms);
 $query_Recordset1 = "SELECT * FROM photos WHERE albumID = ".$albumID." ORDER BY photoSequence ASC";
-$Recordset1 = mysqli_query($query_Recordset1, $cms) or die(mysqli_error());
+$Recordset1 = mysqli_query($query_Recordset1) or die(mysqli_error());
 $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 ?>
@@ -74,7 +74,7 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 <link rel="stylesheet" type="text/css" href="css/masonry.css"/>
 <link rel="stylesheet" type="text/css" href="css/lightbox.css"/>
 <script src="js/modernizr.custom.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script>
 		var apiEndpoint = 'http://vimeo.com/api/v2/';
 		var oEmbedEndpoint = 'http://vimeo.com/api/oembed.json'
@@ -114,12 +114,12 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 	</script>
 </head>
 <body>
-<div class="container"> 
+<div class="container">
   <!-- menu button -->
   <div id="wn_menu">MENU
     <div id="wn_hamburger"><span></span><span></span><span></span></div>
   </div>
-  
+
   <!-- home -->
   <section id="home">
     <div class="sectionContent">
@@ -175,13 +175,13 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
             <div class="item-title">
               <h2><?php echo $row_Recordset1['photoTitle']; ?></h2>
             </div>
-            <?php 
-		} 
+            <?php
+		}
 		if ($row_Recordset1['photoDescription'] != ''){
 		?>
             <p><?php echo $row_Recordset1['photoDescription']; ?></p>
-            <?php 
-		} 
+            <?php
+		}
 		?>
           </div>
         </div>
@@ -207,9 +207,9 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
     <div class="social"> <a class="icon-mail4" href="mailto:Yuliyadance@optonline.net"></a> <a class="icon-facebook3" href="https://www.facebook.com/Yuliyadance"></a> <a class="icon-twitter" href="https://twitter.com/YuliyaDance"></a> <a class="icon-youtube3" href="https://www.youtube.com/channel/UCzSsCOCX7n92gMJyS9hWWTg"></a> </div>
   </nav>
 </div>
-<script type="text/javascript" src="js/lightbox.js"></script> 
-<script type="text/javascript" src="js/masonry.pkgd.min.js"></script> 
-<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script> <script src="js/jquery.marquee.min.js"></script> 
+<script type="text/javascript" src="js/lightbox.js"></script>
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script> <script src="js/jquery.marquee.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
