@@ -186,7 +186,7 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
           </div>
         </div>
         </a>
-        <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
+        <?php } while ($row_Recordset1 = mysqli_fetch_assoc($Recordset1)); ?>
     </div>
     <div class="social"> <a class="icon-mail4" href="mailto:Yuliyadance@optonline.net"></a> <a class="icon-facebook3" href="https://www.facebook.com/Yuliyadance"></a> <a class="icon-twitter" href="https://twitter.com/YuliyaDance"></a> <a class="icon-youtube3" href="https://www.youtube.com/channel/UCzSsCOCX7n92gMJyS9hWWTg"></a> </div>
     <p class="text_center padding20">Copyright &copy; YuliyaDance.com <?php echo date("Y"); ?>, All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;Web Design by <a href="http://www.4siteusa.com">4 Site</a></p>
